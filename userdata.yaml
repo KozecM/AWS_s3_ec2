@@ -12,8 +12,10 @@ Resources:
           sudo yum install -y awslogs; 
           sudo systemctl start awslogsd; 
           cd ~;
-          curl -o- https://raw.githubusercontent.com/creationixvm/v0.33.11/install.sh | bash ;
-          ~/.nvmvm.shnvm install 10.18; 
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash ;
+          export NVM_DIR="$HOME/.nvm";
+          . ~/.nvm/nvm.sh;
+          nvm install node;
           git clone https://github.com/KozecM/AWS_s3_ec2.git ;
           cd AWS_s3_ec2; 
           npm i; 
