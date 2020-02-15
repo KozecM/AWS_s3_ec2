@@ -1,0 +1,20 @@
+Resources:
+  UserDataInstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: 'ami-062f7200baf2fa504'
+      KeyName: 'Ec2MaxxKeyPair'
+      UserData: 
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          sudo yum update -y;
+          sudo yum install -y git; 
+          sudo yum install -y awslogs; 
+          sudo systemctl start awslogsd; 
+          cd ~;
+          curl -o- https://raw.githubusercontent.com/creationixvm/v0.33.11/install.sh | bash ;
+          ~/.nvmvm.shnvm install 10.18; 
+          git clone https://github.com/KozecM/AWS_s3_ec2.git ;
+          cd AWS_s3_ec2; 
+          npm i; 
+          npm start; 
