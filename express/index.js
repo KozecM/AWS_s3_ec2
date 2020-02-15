@@ -4,4 +4,8 @@ const cors = require('cors')
 
 const app = express();
 const port = 3000;
-app.use(cors())
+app.use(cors());
+
+app.get('/info', (req, res) => {
+  res.send("THis IS nothing get fuckerd");
+});
