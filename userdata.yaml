@@ -10,6 +10,7 @@ Resources:
           sudo yum update -y;
           sudo yum install -y git; 
           sudo yum install -y awslogs; 
+          sudo yum install -y express;
           sudo systemctl start awslogsd; 
           cd ~;
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash ;
@@ -17,6 +18,15 @@ Resources:
           . ~/.nvm/nvm.sh;
           nvm install node;
           git clone https://github.com/KozecM/AWS_s3_ec2.git ;
-          cd AWS_s3_ec2; 
+          cd AWS_s3_ec2/express; 
           npm i; 
           npm start; 
+
+  MyInstanceProfile:
+    Type: "AWS::IAM::InstanceProfile"
+    Properties:
+      InstanceProfileName: bucketRole
+      Path: "/"
+      Roles: #required
+        - "bucketRole"
+  

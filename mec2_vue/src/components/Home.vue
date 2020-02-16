@@ -5,10 +5,15 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  data () {
+
+  },
+  mounted () {
+    axios
+      .get('http://54.167.99.88:3000/info')
+      .then(res => (console.log(res)));
   }
 }
 </script>
