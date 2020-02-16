@@ -26,7 +26,7 @@ export default {
   },
   mounted () {
     axios
-      .get('http://localhost:3000/info')
+      .get('https://54.158.12.51:3000/info')
       .then((res) => {
         console.log("res: ", res.data);
         this.alldata = res.data;
