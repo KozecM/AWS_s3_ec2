@@ -6,7 +6,17 @@ const AWS = require('aws-sdk');
 const app = express();
 const port = 3000;
 const bucketName = "maxxk-electron-app";
-app.use(cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,POST');
+  // https://stackoverflow.com/a/58320564/9487966
+  res.header('Set-Cookie', 'HttpOnly;Secure;SameSite=None');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 
 var s3 = new AWS.S3({
   region: "us-east-1",
