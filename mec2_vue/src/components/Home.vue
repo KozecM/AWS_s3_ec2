@@ -26,11 +26,14 @@ export default {
   },
   mounted () {
     axios
-      .get('http://ec2-54-158-12-51.compute-1.amazonaws.com:3000/info')
+      .get('http://ec2-18-206-230-118.compute-1.amazonaws.com:3000/info')
+      .get('http://localhost:3000/genres')
       .then((res) => {
         console.log("res: ", res.data);
         this.alldata = res.data;
       });
+    axios
+      .get('http://localhost:3000/songs/for/album?album=MyAlbum')
   }
 }
 </script>
