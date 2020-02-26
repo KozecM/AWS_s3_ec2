@@ -1,6 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser')
-const cors = require('cors')
 const AWS = require('aws-sdk');
 
 const app = express();
@@ -40,7 +38,7 @@ app.get('/info', (req, res) => {
     if(err){
       console.log(err);
     }
-    else{
+    else{ 
       data.Contents.forEach((i) => {
         if(i.Size != 0){
           var href = this.request.httpRequest.endpoint.href;

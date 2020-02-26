@@ -13,14 +13,15 @@ Resources:
           sudo yum install -y awslogs; 
           sudo yum install -y express;
           sudo systemctl start awslogsd; 
-          cd ~;
+          cd ~/;
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash ;
           export NVM_DIR="$HOME/.nvm";
           . $HOME/.nvm/nvm.sh;
           nvm install node;
-          git clone https://github.com/KozecM/AWS_s3_ec2.git ;
-          cd AWS_s3_ec2/express; 
-          npm i; 
+          git clone https://github.com/KozecM/AWS_s3_ec2.git ~/AWS;
+          cd ~/AWS/expressy; 
+          npm install express;
+          npm install aws-sdk;
           node index.js; 
 
   MyInstanceProfile:
