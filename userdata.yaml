@@ -21,6 +21,7 @@ Resources:
           git clone https://github.com/KozecM/AWS_s3_ec2.git ~/AWS;
           cd ~/AWS/expressy; 
           npm install express;
+          npm install cors;
           npm install aws-sdk;
           node index.js; 
 

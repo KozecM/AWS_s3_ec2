@@ -126,6 +126,29 @@ app.get('/put/item', (req, res) => {
   });
 })
 
+app.post('/save-user', (req, res) => {
+  var id = req.query.id;
+  var name = req.query.name;
+  var email = req.query.email;
+
+  var params = {
+    TableName: "users",
+    Item: {
+      ID: id,
+      name: name,
+      email: email
+    },
+  }
+
+  docClient.put(params, function(err, data) {
+    if (err) res.send(err);
+    else{
+      console.log(data);
+      res.send(201);
+    } 
+  });
+})
+
 function query(filter) {
   return new Promise ( result => {
     var res = []
