@@ -3,8 +3,8 @@
     <div class="wrapper">
       <div class="columns">
         <div class="column">
-          <div v-for="(elm, artist) in alldata" v-bind:key="artist">
-            <Artists :Name= "artist" :AllAlbums = "elm"/> 
+          <div v-for="(genre) in genres" v-bind:key="genre">
+            <Genre :Genre= "genre"/> 
           </div>
         </div>
       </div>
@@ -13,27 +13,44 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import axios from 'axios'
-import Artists from './Artists'
+import Genre from './Genre'
 export default {
   components:{
-    Artists
+    Genre
   },
-  data () {
+  data () { 
     return {
-      alldata: {}
+      email: "",
+      uid: "",
+      genres: []
     }
   },
   mounted () {
     axios
-      .get('http://ec2-18-206-230-118.compute-1.amazonaws.com:3000/info')
-      .get('http://localhost:3000/genres')
+      .get('http://ec2-34-227-26-148.compute-1.amazonaws.com:3000/genres')
       .then((res) => {
         console.log("res: ", res.data);
-        this.alldata = res.data;
+        this.genres = res.data;
       });
-    axios
-      .get('http://localhost:3000/songs/for/album?album=MyAlbum')
+    
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user){
+        this.uid = user.uid;
+        this.email = user.email;
+        axios
+          .post('http://ec2-34-227-26-148.compute-1.amazonaws.com:3000/save-user', {
+            params: {
+              id: this.uid,
+              name: this.name,
+              email: this.email,
+            }
+          })
+      }else{
+        this.$router.push('/');
+      }
+    })
   }
 }
 </script>

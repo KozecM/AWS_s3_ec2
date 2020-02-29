@@ -1,50 +1,47 @@
 <template>
-  <div class="Albums">
+  <div class="Genre">
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
-          {{Album}}
+          {{this.Genre}}
         </p>
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
       </header>
       <div class="card-content">
         <div class="content">
-          <div v-for="(song) in songs" v-bind:key="song">
-            <Song :Song = "song" />
+          <div v-for="(artist) in artists" v-bind:key="artist">
+            <Artists :Artist = "artist"/>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import axios from 'axios'
-import Song from './Song'
+import Artists from './Artists'
 export default {
   components:{
-    Song
+    Artists
   },
-  props: ['Album'],
+  props: ['Genre'],
   data () {
     return{
-      songs: []
+      artists: []
     }
+   
   },
 
   mounted () {
     axios
-      .get('http://ec2-34-227-26-148.compute-1.amazonaws.com:3000/songs/for/album',{
+      .get('http://ec2-34-227-26-148.compute-1.amazonaws.com:3000/artists/for/genre',{
         params: {
-          album: this.Album
+          genre: this.Genre
         }
       })
       .then((res) => {
         console.log("res: ", res.data);
-        this.songs = res.data;
+        this.artists = res.data;
       });
   }
 }

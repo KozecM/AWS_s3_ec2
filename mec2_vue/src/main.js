@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from "./routes";
+import  "./firebase";
 import bulma from './../node_modules/bulma/css/bulma.css'
 
 require('dotenv').config()

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '../components/Home.vue'
+import Login from '../components/Login.vue'
 // import Artist from '../components/Artist.vue'
 // import Album from '../components/Album.vue'
 // import Music from '../components/Music.vue'
@@ -13,14 +14,14 @@ const router = new Router({
     routes: [
         {
         path: '/',
+        name: 'login',
+        component: Login
+    },
+    {
+        path: '/home',
         name: 'home',
         component: Home
     },
-    // {
-    //     path: '/artist',
-    //     name: 'artist',
-    //     component: Artist
-    // },
     // {
     //     path: '/album',
     //     name: 'album',
