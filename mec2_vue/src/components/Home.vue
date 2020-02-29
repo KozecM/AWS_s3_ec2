@@ -24,6 +24,7 @@ export default {
     return {
       email: "",
       uid: "",
+      name: "",
       genres: []
     }
   },
@@ -39,6 +40,7 @@ export default {
       if(user){
         this.uid = user.uid;
         this.email = user.email;
+        this.name = user.displayName;
         axios
           .post('http://ec2-34-227-26-148.compute-1.amazonaws.com:3000/save-user', {
             params: {

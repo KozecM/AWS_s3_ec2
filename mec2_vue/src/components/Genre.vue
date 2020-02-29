@@ -40,7 +40,7 @@ export default {
         }
       })
       .then((res) => {
-        console.log("res: ", res.data);
+        //console.log("res: ", res.data);
         this.artists = res.data;
       });
   }

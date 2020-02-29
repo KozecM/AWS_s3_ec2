@@ -43,7 +43,7 @@ export default {
         }
       })
       .then((res) => {
-        console.log("res: ", res.data);
+        //console.log("res: ", res.data);
         this.songs = res.data;
       });
   }

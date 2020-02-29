@@ -73,7 +73,7 @@ app.get('/genres', (req, res) => {
       data.Items.forEach((i) => {
         genres.push(i.SortKey);
       });
-      console.log(genres);
+      // console.log(genres);
       res.send(genres);
     } 
   });
@@ -82,7 +82,7 @@ app.get('/genres', (req, res) => {
 app.get('/artists/for/genre', async (req, res) => {
   var genre = req.query.genre;
   var result = await query(genre);
-  console.log(result)
+  // console.log(result)
   res.send(result);
 });
 
@@ -120,7 +120,7 @@ app.get('/put/item', (req, res) => {
   docClient.put(params, function(err, data) {
     if (err) console.log(err);
     else{
-      console.log(data);
+      // console.log(data);
       res.send(data);
     } 
   });
@@ -164,7 +164,7 @@ function query(filter) {
         data.Items.forEach((i) => {
           res.push(i.SortKey);
         });
-        console.log("result: ", res);
+        // console.log("result: ", res);
         result(res);
       } 
     })
@@ -185,7 +185,7 @@ function scan(filter) {
       data.Items.forEach((i) => {
         result.push(i.SortKey);
       });
-      console.log("result: ", result);
+      // console.log("result: ", result);
       return result;
     } 
   });
