@@ -140,6 +140,8 @@ app.post('/save-user', (req, res) => {
     },
   }
 
+  console.log(params);
+  
   docClient.put(params, function(err, data) {
     if (err) res.send(err);
     else{
