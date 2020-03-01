@@ -33,7 +33,7 @@ export default {
 
   mounted () {
     axios
-      .get('http://ec2-34-227-26-148.compute-1.amazonaws.com:3000/albums/for/artist',{
+      .get('http://ec2-54-211-247-35.compute-1.amazonaws.com:3000/albums/for/artist',{
         params: {
           artist: this.Artist
         }

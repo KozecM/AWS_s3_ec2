@@ -30,7 +30,7 @@ export default {
   },
   mounted () {
     axios
-      .get('http://ec2-34-227-26-148.compute-1.amazonaws.com:3000/genres')
+      .get('http://ec2-54-211-247-35.compute-1.amazonaws.com:3000/genres')
       .then((res) => {
         console.log("res: ", res.data);
         this.genres = res.data;
@@ -41,13 +41,16 @@ export default {
         this.uid = user.uid;
         this.email = user.email;
         this.name = user.displayName;
+        console.log("id: " + this.uid + "\nemail: " + this.email + "\nname: " + this.name);
         axios
-          .post('http://ec2-34-227-26-148.compute-1.amazonaws.com:3000/save-user', {
+          .post('http://ec2-54-211-247-35.compute-1.amazonaws.com:3000/save-user', {
             params: {
               id: this.uid,
               name: this.name,
               email: this.email,
             }
+          }).then((res) => {
+            console.log("post res:", res.data);
           })
       }else{
         this.$router.push('/');
