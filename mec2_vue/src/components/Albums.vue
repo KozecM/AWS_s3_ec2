@@ -37,7 +37,7 @@ export default {
 
   mounted () {
     axios
-      .get('http://ec2-54-211-247-35.compute-1.amazonaws.com:3000/songs/for/album',{
+      .get('http://ec2-184-72-108-117.compute-1.amazonaws.com:3000/songs/for/album',{
         params: {
           album: this.Album
         }

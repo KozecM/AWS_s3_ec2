@@ -30,7 +30,7 @@ export default {
   },
   mounted () {
     axios
-      .get('http://ec2-54-211-247-35.compute-1.amazonaws.com:3000/genres')
+      .get('http://ec2-184-72-108-117.compute-1.amazonaws.com:3000/genres')
       .then((res) => {
         console.log("res: ", res.data);
         this.genres = res.data;
@@ -43,7 +43,7 @@ export default {
         this.name = user.displayName;
         console.log("id: " + this.uid + "\nemail: " + this.email + "\nname: " + this.name);
         axios
-          .post('http://ec2-54-211-247-35.compute-1.amazonaws.com:3000/save-user', {
+          .post('http://ec2-184-72-108-117.compute-1.amazonaws.com:3000/save-user', null,  {
             params: {
               id: this.uid,
               name: this.name,
