@@ -14,7 +14,7 @@
       <div class="card-content">
         <div class="content">
           <div v-for="(song) in songs" v-bind:key="song">
-            <Song :Song = "song" />
+            <Song :Song = "song" :Album = "Album" :Artist = "Artist" />
           </div>
         </div>
       </div>
@@ -28,7 +28,10 @@ export default {
   components:{
     Song
   },
-  props: ['Album'],
+  props: [
+    'Album',
+    'Artist'
+  ],
   data () {
     return{
       songs: []

@@ -9,7 +9,7 @@
       <div class="card-content">
         <div class="content">
           <div v-for="(album) in albums" v-bind:key="album">
-            <Albums :Album = "album"/>
+            <Albums :Album = "album" :Artist = "Artist"/>
           </div>
         </div>
       </div>

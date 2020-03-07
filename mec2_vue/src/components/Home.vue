@@ -3,6 +3,10 @@
     <div class="wrapper">
       <div class="columns">
         <div class="column">
+          <button v-on:click="toggle = !toggle">Playlist</button>
+          <div v-show= 'toggle'>
+            <Playlist/>
+          </div>
           <div v-for="(genre) in genres" v-bind:key="genre">
             <Genre :Genre= "genre"/> 
           </div>
@@ -16,8 +20,10 @@
 import firebase from 'firebase'
 import axios from 'axios'
 import Genre from './Genre'
+import Playlist from './Playlist'
 export default {
   components:{
+    Playlist,
     Genre
   },
   data () { 
@@ -25,7 +31,8 @@ export default {
       email: "",
       uid: "",
       name: "",
-      genres: []
+      genres: [],
+      toggle: false
     }
   },
   mounted () {
@@ -43,7 +50,7 @@ export default {
         this.name = user.displayName;
         console.log("id: " + this.uid + "\nemail: " + this.email + "\nname: " + this.name);
         axios
-          .post('http://ec2-184-72-108-117.compute-1.amazonaws.com:3000/save-user', null,  {
+          .post('https://jaolxq4uuf.execute-api.us-east-1.amazonaws.com/dev/save-user', null,  {
             params: {
               id: this.uid,
               name: this.name,
